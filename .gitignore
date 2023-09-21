@@ -215,3 +215,7 @@ fabric.properties
 
 # logs
 log/result
+
+# inages
+plane/img/*.png
+plane/img/*.jpg
