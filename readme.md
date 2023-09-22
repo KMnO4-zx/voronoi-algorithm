@@ -59,14 +59,14 @@
 
 ```
 @article{{0},
- author = {Wang Lei, Song Zhixue, Yin Nan &amp; Cheng Gang},
- title = {A Raster Voronoi Diagram Generating Algorithm Using Edge Attribution and Bilateral Scanning},
- journal = {Geomatics and Information Science of Wuhan University},
- volume = {},
- number = {},
- year = {},
- issn = {1671-8860},
- doi ={10.13203/j.whugis20220110}
+  author = {Wang Lei, Song Zhixue, Yin Nan &amp; Cheng Gang},
+  title = {A Raster Voronoi Diagram Generating Algorithm Using Edge Attribution and Bilateral Scanning},
+  journal = {Geomatics and Information Science of Wuhan University},
+  volume = {},
+  number = {},
+  year = {},
+  issn = {1671-8860},
+  doi ={10.13203/j.whugis20220110}
  }
 ```
 
