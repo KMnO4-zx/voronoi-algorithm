@@ -1,3 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+'''
+@File    :   pane_voronoi.py
+@Time    :   2023/09/21 17:03:58
+@Author  :   不要葱姜蒜
+@Version :   1.0
+@Desc    :   None
+'''
+
 import pprint
 import copy
 import random

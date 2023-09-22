@@ -1,3 +1,13 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+'''
+@File    :   centroid_voronoi.py
+@Time    :   2023/09/21 20:00:45
+@Author  :   不要葱姜蒜
+@Version :   1.0
+@Desc    :   None
+'''
+
 import random, pprint
 from collections import defaultdict
 from pane_voronoi import PaneVoronoi
