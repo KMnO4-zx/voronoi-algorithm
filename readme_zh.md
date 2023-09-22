@@ -4,9 +4,9 @@
 
 ```
 |--pnae
-	|--img
-	|--centroid_voronoi.py
-	|--pane_voronoi.py
+  |--img
+  |--centroid_voronoi.py
+  |--pane_voronoi.py
 |--Latitude.py
 |--Longitude.py
 |--symmetry.py
