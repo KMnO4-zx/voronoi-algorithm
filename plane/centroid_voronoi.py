@@ -30,9 +30,11 @@ def next_seeds(voronoi_data):
     return res
 
 n = 800 # 边长
-seed_num = 32
+step = 25 # 质心迭代次数
+seed_num = 32 # 种子点个数
+
 seed_init = [[random.randrange(n), random.randrange(n)] for _ in range(seed_num)] # 种子点列表
-colors = [[0, 0, 0]] + [[random.randrange(99, 206) for _ in range(3)] for _ in range(seed_num)]
+colors = [[0, 0, 0]] + [[random.randrange(99, 206) for _ in range(3)] for _ in range(seed_num)] # 随机颜色列表
 
 for i in range(25):
     print('第{}次迭代'.format(i+1))
