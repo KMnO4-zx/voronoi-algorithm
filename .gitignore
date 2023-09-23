@@ -219,3 +219,5 @@ log/result
 # inages
 plane/img/*.png
 plane/img/*.jpg
+sphere/img/*.png
+sphere/img/*.jpg

@@ -12,7 +12,7 @@ from symmetry import Symmetry
 import pprint
 
 
-class Solution:
+class SphersVoronoi:
     def __init__(self, n, seed):
         self.n = n  # 层数
         self.size = 2 ** n + 1  # 边长
@@ -178,11 +178,12 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution(3, 5)
-    s.deal()
-    print(s.seed_list)
-    pprint.pprint(s.table)
-    pprint.pprint(s.positive_reverse())
+    s = SphersVoronoi(10, 50)
+    # s.deal()
+    # print(s.seed_list)
+    # pprint.pprint(s.table)
+    # data = s.positive_reverse()
+    # s.paint(data, 'positive_reverse', s.color)
     # pprint.pp(s.color)
     # pprint.pp(s.coordinate_table)
     # positive_reverse = s.positive_reverse()
