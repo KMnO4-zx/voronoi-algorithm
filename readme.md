@@ -61,7 +61,7 @@ seed_num = 32 # 种子点个数
 > 注：如果只想获取平面`Voronoi`图，将`step`设置为`1`即可。下图为`step=25`的结果。
 
 <div style="text-align:center;">
-  <img src="image/image-20230922221307418.png" alt="image-20230922221307418" style="width:42%;" />
+  <img align="center" src="image/image-20230922221307418.png" alt="image-20230922221307418" style="width:42%;" />
 </div>
 
 
