@@ -102,6 +102,7 @@ step = 25 # 质心迭代次数
 <div style="text-align:center;">
   <img src="image/image-20230924211605394.png" alt="image-20230924211605394" style="width:45%;" />
 </div>
+
 ## 引用
 
 如果您觉得我的工作对您有帮助，请考虑引用下列论文~
