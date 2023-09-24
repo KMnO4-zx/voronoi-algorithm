@@ -87,7 +87,7 @@ step = 25 # 质心迭代次数
 > 注：如果只想获取球面`Voronoi`图，将`step`设置为`1`即可。下图为`step=25`的结果。
 
 <div style="text-align:center;">
-  <img src="image/positive_reverse_sphere_18.png.jpg" alt="positive_reverse_sphere_18" style="width:41%;" />
+  <img src="image/positive_reverse_sphere_25.png.jpg" alt="positive_reverse_sphere_18" style="width:41%;" />
 </div>
 
 
