@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球面质心Voronoi</title>
+    <script src="Cesium/Cesium.js"></script>
+    <link rel="stylesheet" href="Cesium/Widgets/widgets.css">
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div id="puiedu-cesiumContainer"></div>
+    <script>
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2ZGNkYTZjYy1iMTg4LTQ1ZGMtODY1Ni04MDg1YjhmMzgyNzciLCJpZCI6ODgwNzAsImlhdCI6MTY0ODg3NjMzOH0.bdKxV8aKYtSJmUldGXvIw8-KBhCHY4BxR0CWT3ZWF-4';
+        var viewer = new Cesium.Viewer('puiedu-cesiumContainer');
+        var scene = viewer.scene;
+        viewer.scene.globe.show = true;  // 对地球设置隐藏,默认为ture
+    
+        function polygon_draw(coords, color_test){
+            viewer.entities.add({
+                name: 'polygon',
+                polygon: {
+                    hierarchy: Cesium.Cartesian3.fromDegreesArray(coords),
+                    material: Cesium.Color.fromCssColorString("rgba(" + color_test + ", 0.9)"),
+                }   
+            })
+        }
+
+        window.onload = function () {
+            let url = './data/9-50-25.json';
+            let request = new XMLHttpRequest();
+            request.open('get', url);
+            request.send(null);
+            request.onload = function () {
+                if (request.status == 200){
+                    let json = JSON.parse(request.responseText);
+                    // console.log(json);
+                    for(let i = 0; i < json.length; i++){
+                        polygon_draw(json[i][0], json[i][1]);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

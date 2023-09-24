@@ -12,13 +12,16 @@
   |--centroid_voronoi.py
   |--pane_voronoi.py
 |--sphere
+  |--Cesium
   |--img
+  |--data
   |--Latitude.py
   |--Longitude.py
   |--symmetry.py
   |--run.py
   |--convert_la.py
   |--centroid_run.py
+  |--Voronoi_SP.html
 |--requirements.txt
 |--readme.md
 ```
@@ -34,6 +37,8 @@
 - `sphere/run.py`：生成球形`Voronoi`图的核心算法，运行这个`python`文件会得到一个二维数组，这个数组存储了`Voronoi`区域中所有点的归属信息。
 - `sphere/centroid_run.py`：生成球形质心`Voronoi`图的核心算法，运行这个`python`文件会得到一个二维数组，这个数组存储了`Voronoi`区域中所有点的归属信息。
 - `sphere/convert_la.py`：将球面笛卡尔坐标转换为经纬度坐标。
+- `sphere/Voronoi.html`用于球面Voronoi的展示，需要配合`VScode`的中`Live Serve`插件使用。
+- `sphere/data`：这个目录用于存放可供`Cesium`使用的`json`文件。
 
 ## Todo
 
@@ -41,10 +46,9 @@
 - [x] 平面质心Voronoi图生成
 - [x] 球面Voronoi图生成
 - [x] 球面质心Voronoi图生成
-- [ ] 利用Cesium展示球面Voronoi图
+- [x] 利用Cesium展示球面Voronoi图
 - [ ] 利用世界人口密度数据生成球面质心Voronoi图
 - [ ] 给定任意密度图，生成球面质心Voronoi图
-- [ ] 给定任意密度图，生成平面质心Voronoi图
 
 ## 快速开始
 
@@ -85,13 +89,19 @@ step = 25 # 质心迭代次数
 ```
 
 > 注：如果只想获取球面`Voronoi`图，将`step`设置为`1`即可。下图为`step=25`的结果。
+>
+> 
 
 <div style="text-align:center;">
   <img src="image/positive_reverse_sphere_25.png.jpg" alt="positive_reverse_sphere_18" style="width:41%;" />
 </div>
 
 
-- 球面`Cesium`展示，敬请期待~
+- 球面`Cesium`展示，此为`step=25`的结果。可以看出球面上的`Voornoi`区域都比较均。
+
+<div style="text-align:center;">
+  <img src="image/image-20230924211605394.png" alt="image-20230924211605394" style="width:45%;" />
+</div>
 ## 引用
 
 如果您觉得我的工作对您有帮助，请考虑引用下列论文~
@@ -108,4 +118,3 @@ step = 25 # 质心迭代次数
   doi ={10.13203/j.whugis20220110}
 }
 ```
-

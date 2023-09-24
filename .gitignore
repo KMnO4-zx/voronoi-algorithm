@@ -3,7 +3,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+.vscode/
 # C extensions
 *.so
 
@@ -216,8 +216,10 @@ fabric.properties
 # logs
 log/result
 
-# inages
+# images
 plane/img/*.png
 plane/img/*.jpg
 sphere/img/*.png
 sphere/img/*.jpg
+# json
+sphere/data/*.json

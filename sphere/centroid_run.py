@@ -8,7 +8,7 @@
 @Desc    :   None
 '''
 
-import random, pprint
+import random, pprint, json
 from collections import defaultdict
 import numpy as np
 from run import SphersVoronoi
@@ -27,9 +27,21 @@ def next_seeds(n, voronoi_data):
         res.append(calculate_center(value))
     return res
 
-n = 10 # 层数
+def cesium_paint(n, data, colors):
+    # 此函数用于将data数据更改为cesium可用的格式，data为positive_reverse()函数的返回值
+    res = []
+    for i in range(len(data) - 1):
+        for j in range(len(data[0]) - 1):
+            left_top = convert_la(n, [i, j])
+            right_top = convert_la(n, [i, j + 1])
+            left_bottom = convert_la(n, [i + 1, j])
+            right_bottom = convert_la(n, [i + 1, j + 1])
+            res.append([left_top + right_top + right_bottom + left_bottom, colors[data[i][j]]])
+    return res
+
+n = 9 # 层数
 size = 2 ** n + 1 # 边长
-seed_num = 12 # 种子点数量
+seed_num = 50 # 种子点数量
 step = 25 # 质心迭代次数
 colors = [[0, 0, 0]] + [[random.randrange(99, 206) for _ in range(3)] for _ in range(seed_num)] # 随机颜色列表
 seed_list = [convert_la(n, [random.randrange(size), random.randrange(size)]) for _ in range(seed_num)] # 种子点列表
@@ -39,6 +51,10 @@ for i in range(step):
     sv = SphersVoronoi(n, seed_list)
     sv.deal()
     data = sv.positive_reverse()
+    # 保存可被Cesium使用的json文件
+    with open(f'./data/{n}-{seed_num}-{i+1}.json', mode='w', encoding='utf-8') as f:
+        f.write(str(json.dumps(cesium_paint(n, data, colors))))
+    # 保存为png图片
     sv.paint(data, 'positive_reverse_sphere_{}.png'.format(i+1), colors)
     seed_list = next_seeds(n, data)
 
