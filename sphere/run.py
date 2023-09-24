@@ -13,18 +13,18 @@ import pprint
 
 
 class SphersVoronoi:
-    def __init__(self, n, seed):
+    def __init__(self, n, seed_list):
         self.n = n  # 层数
         self.size = 2 ** n + 1  # 边长
-        self.seed = seed
-        self.seed_list = self.create_seed()
+        # self.seed = seed
+        self.seed_list = seed_list
         self.R = 6371  # 地球半径 6371km
         self.table = [[0] * self.size for _ in range(self.size)]
         self.color = self.colors()
         self.visited = [[False] * self.size for _ in range(self.size)]
         self.count = self.size * 4 - 4
         self.coordinate_table = self.coordinate_table()
-        self.ori_table = self.ori_table()
+        # self.ori_table = self.ori_table()
 
     def coordinate_table(self):
         res = [[[]] * self.size for _ in range(self.size)]
@@ -42,7 +42,7 @@ class SphersVoronoi:
 
     def colors(self):
         res = [[0, 0, 0]]  # 第一个颜色是种子点的颜色
-        for _ in range(self.seed):
+        for _ in range(len(self.seed_list)):
             res.append([random.randrange(99, 206) for _ in range(3)])
         return res
 
@@ -60,7 +60,7 @@ class SphersVoronoi:
 
     def create_seed(self):
         res = []
-        for _ in range(self.seed):
+        for _ in range(len(self.seed_list)):
             res.append(self.get_la_long(self.get_real(
                 [random.randrange(self.size), random.randrange(self.size)])))
         return res
@@ -81,7 +81,7 @@ class SphersVoronoi:
         # 参数为经纬度坐标
         dic = float('inf')
         res = []
-        for i in range(self.seed):
+        for i in range(len(self.seed_list)):
             tmp = self.arc_distance(coord, self.seed_list[i])
             if tmp < dic:
                 res.append(i)

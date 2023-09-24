@@ -11,10 +11,14 @@
   |--img
   |--centroid_voronoi.py
   |--pane_voronoi.py
-|--Latitude.py
-|--Longitude.py
-|--symmetry.py
-|--run.py
+|--sphere
+  |--img
+  |--Latitude.py
+  |--Longitude.py
+  |--symmetry.py
+  |--run.py
+  |--convert_la.py
+  |--centroid_run.py
 |--requirements.txt
 |--readme.md
 ```
@@ -22,19 +26,25 @@
 ## 介绍
 
 - `plane`：这个目录下存放平面质心`Voronoi`图的生成算法，如果不想生成质心`Voronoi`图，那只需要把迭代次数设置为`1`即可。
-
-
-- `latitude.py`:将平面笛卡尔坐标转换为经纬度坐标得到纬度值。
-- `longitude.py`:将平面笛卡尔坐标转换为经纬度坐标得到经度值。
-- `symmetry.py`:南半球的坐标与北半球对称排列。
-- `run.py`:生成球形`Voronoi`图的核心算法，运行这个`python`文件会得到一个二维数组，这个数组存储了`Voronoi`区域中所有点的归属信息。
+- `sphere`：这个目录下存放球面质心`Voronoi`图的生成算法，如果不想生成质心`Voronoi`图，那只需要把迭代次数设置为`1`即可。
+- `sphere/img` or `plane/img`：这个目录下存放生成的`Voronoi`图。
+- `sphere/latitude.py`：将平面笛卡尔坐标转换为经纬度坐标得到纬度值。
+- `sphere/longitude.py`：将平面笛卡尔坐标转换为经纬度坐标得到经度值。
+- `sphere/symmetry.py`：南半球的坐标与北半球对称排列。
+- `sphere/run.py`：生成球形`Voronoi`图的核心算法，运行这个`python`文件会得到一个二维数组，这个数组存储了`Voronoi`区域中所有点的归属信息。
+- `sphere/centroid_run.py`：生成球形质心`Voronoi`图的核心算法，运行这个`python`文件会得到一个二维数组，这个数组存储了`Voronoi`区域中所有点的归属信息。
+- `sphere/convert_la.py`：将球面笛卡尔坐标转换为经纬度坐标。
 
 ## Todo
 
 - [x] 平面Voronoi图生成
 - [x] 平面质心Voronoi图生成
-- [ ] 球面Voronoi图生成
+- [x] 球面Voronoi图生成
+- [x] 球面质心Voronoi图生成
 - [ ] 利用Cesium展示球面Voronoi图
+- [ ] 利用世界人口密度数据生成球面质心Voronoi图
+- [ ] 给定任意密度图，生成球面质心Voronoi图
+- [ ] 给定任意密度图，生成平面质心Voronoi图
 
 ## 快速开始
 
@@ -65,8 +75,23 @@ seed_num = 32 # 种子点个数
 </div>
 
 
-+ 球面`Voronoi`图和球面质心`Voronoi`图正在整理，敬请期待~
+-  如果要获取球面`Voronoi`图，需要运行`sphere`目录下的`centroid_run.py`文件。需要更改以下参数：
 
+```python
+n = 10 # 层数
+size = 2 ** n + 1 # 边长
+seed_num = 12 # 种子点数量
+step = 25 # 质心迭代次数
+```
+
+> 注：如果只想获取球面`Voronoi`图，将`step`设置为`1`即可。下图为`step=25`的结果。
+
+<div style="text-align:center;">
+  <img src="image/positive_reverse_sphere_18.png.jpg" alt="positive_reverse_sphere_18" style="width:41%;" />
+</div>
+
+
+- 球面`Cesium`展示，敬请期待~
 ## 引用
 
 如果您觉得我的工作对您有帮助，请考虑引用下列论文~
