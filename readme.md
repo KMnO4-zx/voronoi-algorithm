@@ -74,7 +74,7 @@ seed_num = 32 # 种子点个数
 
 > 注：如果只想获取平面`Voronoi`图，将`step`设置为`1`即可。下图为`step=25`的结果。
 
-<div style="text-align:center;">
+<div align=center>
   <img align="center" src="image/image-20230922221307418.png" alt="image-20230922221307418" style="width:42%;" />
 </div>
 
@@ -92,14 +92,14 @@ step = 25 # 质心迭代次数
 >
 > 
 
-<div style="text-align:center;">
+<div align=center>
   <img src="image/positive_reverse_sphere_25.png.jpg" alt="positive_reverse_sphere_18" style="width:41%;" />
 </div>
 
 
 - 球面`Cesium`展示，此为`step=25`的结果。可以看出球面上的`Voornoi`区域都比较均。
 
-<div style="text-align:center;">
+<div align=center>
   <img src="image/image-20230924211605394.png" alt="image-20230924211605394" style="width:41%;" />
 </div>
 
