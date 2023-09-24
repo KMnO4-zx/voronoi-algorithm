@@ -100,7 +100,7 @@ step = 25 # 质心迭代次数
 - 球面`Cesium`展示，此为`step=25`的结果。可以看出球面上的`Voornoi`区域都比较均。
 
 <div style="text-align:center;">
-  <img src="image/image-20230924211605394.png" alt="image-20230924211605394" style="width:45%;" />
+  <img src="image/image-20230924211605394.png" alt="image-20230924211605394" style="width:41%;" />
 </div>
 
 ## 引用
