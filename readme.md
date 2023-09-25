@@ -48,7 +48,6 @@
 - [x] 球面质心Voronoi图生成
 - [x] 利用Cesium展示球面Voronoi图
 - [ ] 利用世界人口密度数据生成球面质心Voronoi图
-- [ ] 给定任意密度图，生成球面质心Voronoi图
 
 ## 快速开始
 
