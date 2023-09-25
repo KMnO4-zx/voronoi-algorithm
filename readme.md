@@ -51,7 +51,7 @@
 - [x] 球面质心`Voronoi`图生成
 - [x] 利用`Cesium`展示球面`Voronoi`图
 - [x] 利用世界人口密度数据生成球面质心`Voronoi`图
-- [ ] 使用`Cesium`中的`Primitive`加载球麦呢质心`Voronoi`图
+- [ ] 使用`Cesium`中的`Primitive`加载球面`Voronoi`图
 
 ## 快速开始
 
