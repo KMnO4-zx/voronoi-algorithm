@@ -105,6 +105,7 @@ step = 25 # 质心迭代次数
 <div align=center>
   <img src="image/image-20230924211605394.png" alt="image-20230924211605394" style="width:41%;" />
 </div>
+
 - 球面质心`Cesium`展示（人口密度数据），此为`seed_num=50, step=25`的结果。海洋区域的Voronoi区块都比较大，大陆区域的Voronoi区块较小。（可以尝试增加种子点数目）
 
 <div align=center>
