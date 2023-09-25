@@ -39,6 +39,8 @@ def get_population(coord):
     # 纬度
     if coord[1] >= 0:  # 北半球
         height = int((90 - coord[1]) * 120)
+    elif coord[1] == -90:  # 南极点
+        height = 0
     else:  # 南半球
         height = int((abs(coord[1]) + 90) * 120)
     # 经度
@@ -48,11 +50,12 @@ def get_population(coord):
     return density[color]
 
 
+
 dataset = None
 
 # # 关闭数据集
 # dataset = None
 if __name__ == '__main__':
-    for _ in range(100):
-        print(get_population([0.27524, 35.19558]))
-        print(get_population([-90.31660, -10.61537]))
+    coords = [[0, -90.0], [-90.0, -67.5], [-90.0, -45.0], [-90.0, -22.5], [-90.0, -22.5], [-90.0, -45.0], [-90.0, -67.5], [0.0, -90.0], [-116.56505117707799, -22.5], [-63.43494882292201, -22.5], [-45.00000000000001, -45.0], [-0.0, -67.5], [-0.0, -67.5], [0.0, -90.0], [0.0, -90.0]]
+    for coord in coords:
+        print(get_population(coord))

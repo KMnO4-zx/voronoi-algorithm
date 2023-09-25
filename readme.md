@@ -22,6 +22,9 @@
   |--convert_la.py
   |--centroid_run.py
   |--Voronoi_SP.html
+  |--population.py
+  |--population_centroid.py
+  |--landscan-global-2021-colorized.tif
 |--requirements.txt
 |--readme.md
 ```
@@ -42,12 +45,13 @@
 
 ## Todo
 
-- [x] 平面Voronoi图生成
-- [x] 平面质心Voronoi图生成
-- [x] 球面Voronoi图生成
-- [x] 球面质心Voronoi图生成
-- [x] 利用Cesium展示球面Voronoi图
-- [ ] 利用世界人口密度数据生成球面质心Voronoi图
+- [x] 平面`Voronoi`图生成
+- [x] 平面质心`Voronoi`图生成
+- [x] 球面`Voronoi`图生成
+- [x] 球面质心`Voronoi`图生成
+- [x] 利用`Cesium`展示球面`Voronoi`图
+- [x] 利用世界人口密度数据生成球面质心`Voronoi`图
+- [ ] 使用`Cesium`中的`Primitive`加载球麦呢质心`Voronoi`图
 
 ## 快速开始
 
@@ -96,11 +100,17 @@ step = 25 # 质心迭代次数
 </div>
 
 
-- 球面`Cesium`展示，此为`seed_num=50, step=25`的结果。可以看出球面上的`Voornoi`区域都比较均匀。
+- 球面质心`Cesium`展示，此为`seed_num=50, step=25`的结果。可以看出球面上的`Voornoi`区域都比较均匀。
 
 <div align=center>
   <img src="image/image-20230924211605394.png" alt="image-20230924211605394" style="width:41%;" />
 </div>
+- 球面质心`Cesium`展示（人口密度数据），此为`seed_num=50, step=25`的结果。海洋区域的Voronoi区块都比较大，大陆区域的Voronoi区块较小。（可以尝试增加种子点数目）
+
+<div align=center>
+  <img src="image/image-20230925221524599.png" alt="image-image-20230925221524599" style="width:41%;" />
+</div>
+
 
 ## 引用
 

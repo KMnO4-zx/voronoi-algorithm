@@ -58,11 +58,15 @@ def calculate_center(coordinates):
     return [center_lon, center_lat]
 
 def calculate_weighted_center(coordinates, weights):
+    # 不仅需要经纬度坐标，还需要每个坐标的权重
     num_coords = len(coordinates)
     x = 0.0
     y = 0.0
     z = 0.0
     total_weight = sum(weights)
+
+    if total_weight == 0:
+        total_weight = 1  # 设置默认值为1
 
     for i in range(num_coords):
         lon, lat = coordinates[i]
