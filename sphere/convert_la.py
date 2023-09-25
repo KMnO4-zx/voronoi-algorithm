@@ -57,4 +57,29 @@ def calculate_center(coordinates):
 
     return [center_lon, center_lat]
 
+def calculate_weighted_center(coordinates, weights):
+    num_coords = len(coordinates)
+    x = 0.0
+    y = 0.0
+    z = 0.0
+    total_weight = sum(weights)
+
+    for i in range(num_coords):
+        lon, lat = coordinates[i]
+        weight = weights[i] / total_weight  # 归一化权重
+
+        lat_rad = math.radians(lat)
+        lon_rad = math.radians(lon)
+
+        x += weight * math.cos(lat_rad) * math.cos(lon_rad)
+        y += weight * math.cos(lat_rad) * math.sin(lon_rad)
+        z += weight * math.sin(lat_rad)
+
+    center_lon = math.atan2(y, x)
+    center_lat = math.atan2(z, math.sqrt(x * x + y * y))
+
+    center_lon = math.degrees(center_lon)
+    center_lat = math.degrees(center_lat)
+
+    return [center_lon, center_lat]
 
