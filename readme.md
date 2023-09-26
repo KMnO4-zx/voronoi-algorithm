@@ -21,7 +21,8 @@
   |--run.py
   |--convert_la.py
   |--centroid_run.py
-  |--Voronoi_SP.html
+  |--Voronoi_Primitive.html
+  |--Voronoi_entities.html
   |--population.py
   |--population_centroid.py
   |--landscan-global-2021-colorized.tif
@@ -40,8 +41,13 @@
 - `sphere/run.py`：生成球形`Voronoi`图的核心算法，运行这个`python`文件会得到一个二维数组，这个数组存储了`Voronoi`区域中所有点的归属信息。
 - `sphere/centroid_run.py`：生成球形质心`Voronoi`图的核心算法，运行这个`python`文件会得到一个二维数组，这个数组存储了`Voronoi`区域中所有点的归属信息。
 - `sphere/convert_la.py`：将球面笛卡尔坐标转换为经纬度坐标。
-- `sphere/Voronoi.html`用于球面Voronoi的展示，需要配合`VScode`的中`Live Serve`插件使用。
+- `sphere/Voronoi_entities.html`用于球面Voronoi的展示，使用`entities`方法加载图形。需要配合`VScode`的中`Live Serve`插件使用。
+- `sphere/Voronoi_Primitive.html`用于球面Voronoi的展示，使用`Primitive`方法加载图形（效率比较高）。需要配合`VScode`的中`Live Serve`插件使用。
 - `sphere/data`：这个目录用于存放可供`Cesium`使用的`json`文件。
+- `sphere/landscan-global-2021-colorized.tif`：这个文件是世界人口密度数据，数据来源：[LandScan Global 2021](https://landscan.ornl.gov)。
+
+
+> 注：如果想要使用世界人口数据绘制球面质心`Voronoi`图，需要安装`GDAL`库，建议使用`conda`安装，`conda install -c conda-forge gdal`。假如还是不行建议下载`GDAL`的`whl`文件，然后使用`pip`安装。
 
 ## Todo
 
