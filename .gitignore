@@ -223,3 +223,4 @@ sphere/img/*.png
 sphere/img/*.jpg
 # json
 sphere/data/*.json
+sphere/geojson/*.geojson

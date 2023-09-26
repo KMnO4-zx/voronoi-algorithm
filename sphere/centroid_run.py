@@ -39,10 +39,42 @@ def cesium_paint(n, data, colors):
             res.append([left_top + right_top + right_bottom + left_bottom, colors[data[i][j]]])
     return res
 
+def geojson_paint(n, data, colors):
+    geojson = {
+        "type": "FeatureCollection",
+        "features": []
+    }
+    for i in range(len(data) - 1):
+        for j in range(len(data[0]) - 1):
+            left_top = convert_la(n, [i, j])
+            right_top = convert_la(n, [i, j + 1])
+            left_bottom = convert_la(n, [i + 1, j])
+            right_bottom = convert_la(n, [i + 1, j + 1])
+            tmp = {
+                "type": "Feature",
+                "geometry": {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        left_top,
+                        right_top,
+                        right_bottom,
+                        left_bottom,
+                        left_top
+                    ]
+                ]
+                },
+                "properties": {
+                "color": "rgb({},{},{})".format(colors[data[i][j]][0], colors[data[i][j]][1], colors[data[i][j]][2])
+                }
+            }
+            geojson['features'].append(tmp)
+    return geojson
+
 n = 9 # 层数
 size = 2 ** n + 1 # 边长
-seed_num = 50 # 种子点数量
-step = 25 # 质心迭代次数
+seed_num = 222 # 种子点数量
+step = 1 # 质心迭代次数
 colors = [[0, 0, 0]] + [[random.randrange(99, 206) for _ in range(3)] for _ in range(seed_num)] # 随机颜色列表
 seed_list = [convert_la(n, [random.randrange(size), random.randrange(size)]) for _ in range(seed_num)] # 种子点列表
 
@@ -54,6 +86,9 @@ for i in range(step):
     # 保存可被Cesium使用的json文件
     with open(f'./data/{n}-{seed_num}-{i+1}.json', mode='w', encoding='utf-8') as f:
         f.write(str(json.dumps(cesium_paint(n, data, colors))))
+    # 保存为geojson文件
+    # with open(f'./geojson/{n}-{seed_num}-{i+1}.geojson', mode='w', encoding='utf-8') as f:
+    #     f.write(str(json.dumps(geojson_paint(n, data, colors))))
     # 保存为png图片
     sv.paint(data, 'positive_reverse_sphere_{}.png'.format(i+1), colors)
     seed_list = next_seeds(n, data)
