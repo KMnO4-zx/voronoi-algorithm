@@ -4,7 +4,7 @@
 
 &emsp;&emsp;Spherical Voronoi diagrams are an important research topic in computational geometry, and the generation algorithm is a key technique. Existing spherical raster algorithms are mostly extensions of planar algorithms that conform to the discrete nature of computers but are not efficient for processing massive data. To address this issue, an algorithm combining edge attribution and bilateral scanning is proposed for generating spherical Voronoi diagrams.
 
-&emsp;The core of this algorithm is to reduce the number of determination computations of grid ownership by utilizing the Voronoi attributes of neighboring grid cells, thereby improving efficiency. Experimental results show that this algorithm achieves the same accuracy as the deterministic ownership algorithm but reduces the computation by over 80% and improves efficiency by more than four times. Furthermore, as the number of divided grid cells increases, the advantages of the algorithm become more apparent.
+&emsp;&emsp;The core of this algorithm is to reduce the number of determination computations of grid ownership by utilizing the Voronoi attributes of neighboring grid cells, thereby improving efficiency. Experimental results show that this algorithm achieves the same accuracy as the deterministic ownership algorithm but reduces the computation by over 80% and improves efficiency by more than four times. Furthermore, as the number of divided grid cells increases, the advantages of the algorithm become more apparent.
 
 ## Directory
 
