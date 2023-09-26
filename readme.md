@@ -1,5 +1,7 @@
 # An algorithm using edge attribution and bilateral scanning to generate spherical raster Voronoi diagrams
 
+*Read this in English: [English](readme_en.md)*
+
 &emsp;&emsp;球面`Voronoi`图是计算几何中的重要研究方向，生成算法是关键技术。现有的球面栅格算法多是由平面算法扩展而来，符合计算机的离散特征，但在海量数据处理时效率不高。为解决这个问题，提出了一种结合边缘归属与双向扫描的球面`Voronoi`图生成算法。
 
 &emsp;该算法的核心是利用邻近格网的`Voronoi`属性传递，来减少格网的确定归属计算次数，以此达到提高效率的目的。实验结果表明，这种算法具有与确定归属算法相同的精度，但计算量减少了80%以上，效率提高了四倍以上。此外，随着划分的格网数量增加，算法的优势更加明显。
