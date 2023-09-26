@@ -51,7 +51,7 @@
 - [x] 球面质心`Voronoi`图生成
 - [x] 利用`Cesium`展示球面`Voronoi`图
 - [x] 利用世界人口密度数据生成球面质心`Voronoi`图
-- [ ] 使用`Cesium`中的`Primitive`加载球面`Voronoi`图
+- [x] 使用`Cesium`中的`Primitive`加载球面`Voronoi`图
 
 ## 快速开始
 
@@ -106,12 +106,11 @@ step = 25 # 质心迭代次数
   <img src="image/image-20230924211605394.png" alt="image-20230924211605394" style="width:41%;" />
 </div>
 
-- 球面质心`Cesium`展示（人口密度数据），此为`seed_num=50, step=25`的结果。海洋区域的Voronoi区块都比较大，大陆区域的Voronoi区块较小。（可以尝试增加种子点数目）
+- 球面质心`Cesium`展示（人口密度数据），此为`seed_num=168, step=64`的结果。海洋区域的Voronoi区块都比较大，大陆区域的Voronoi区块较小。
 
 <div align=center>
-  <img src="image/image-20230925221524599.png" alt="image-image-20230925221524599" style="width:41%;" />
+  <img src="image/image-20230926103308702.png" alt="image-image-20230926103308702.png" style="width:41%;" />
 </div>
-
 
 ## 引用
 
