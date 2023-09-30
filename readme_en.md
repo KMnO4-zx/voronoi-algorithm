@@ -114,7 +114,7 @@ step = 25 # centroid iteration count
 - Display spherical centroid Voronoi diagrams using Cesium (with population density data). The image below shows the result with `seed_num=168` and `step=64`. The Voronoi regions in the ocean areas are larger, while the regions in the land areas are smaller.
 
 <div align=center>
-  <img src="image/image-20230926103308702.png" alt="image-image-20230926103308702.png" style="width:41%;" />
+  <img src="image/球面人口密度9-1000-64.png" alt="image-球面人口密度9-1000-64.png" style="width:41%;" />
 </div>
 
 ## Citation
