@@ -118,7 +118,7 @@ step = 25 # 质心迭代次数
 - 球面质心`Cesium`展示（人口密度数据），此为`seed_num=168, step=64`的结果。海洋区域的Voronoi区块都比较大，大陆区域的Voronoi区块较小。
 
 <div align=center>
-  <img src="image/image-20230926103308702.png" alt="image-image-20230926103308702.png" style="width:41%;" />
+  <img src="image/球面人口密度9-1000-64.png" alt="image-球面人口密度9-1000-64.png" style="width:41%;" />
 </div>
 
 ## 引用

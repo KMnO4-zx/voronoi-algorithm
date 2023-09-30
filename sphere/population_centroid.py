@@ -41,10 +41,10 @@ def population_next_seed(n, voronoi_data):
         res.append(calculate_weighted_center(voronoi_regin[key], weights))
     return res
     
-n = 10 # 层数
+n = 9 # 层数
 size = 2 ** n + 1 # 边长
-seed_num = 200 # 种子点数量
-step = 2 # 质心迭代次数
+seed_num = 1000 # 种子点数量
+step = 64 # 质心迭代次数
 colors = [[0, 0, 0]] + [[random.randrange(99, 206) for _ in range(3)] for _ in range(seed_num)] # 随机颜色列表
 seed_list = [convert_la(n, [random.randrange(size), random.randrange(size)]) for _ in range(seed_num)] # 种子点列表
 
