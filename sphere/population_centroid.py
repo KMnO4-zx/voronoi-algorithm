@@ -58,4 +58,4 @@ for i in range(step):
         f.write(str(json.dumps(cesium_paint(n, data, colors))))
     # 保存为png图片
     sv.paint(data, 'positive_reverse_sphere_population{}.png'.format(i+1), colors)
-    seed_list = population_next_seed(n, data)
+    seed_list = population_next_seed(n, data) 

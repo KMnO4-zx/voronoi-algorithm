@@ -43,7 +43,7 @@ for i in range(step):
     data = pv.positive_reverse()
     pv.paint(data, 'positive_reverse_{}.png'.format(i+1), colors)
     seed_init = next_seeds(data)
-    # pprint.pprint(data)
+    # pprint.pprint(data) 
     # print(seed_init)
 
 

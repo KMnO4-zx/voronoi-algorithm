@@ -126,7 +126,7 @@ step = 25 # 质心迭代次数
 如果您觉得我的工作对您有帮助，请考虑引用下列论文~
 
 ```latex
-@article{{0},
+@article{{0}, 
   author = {Wang Lei, Song Zhixue, Yin Nan &amp; Cheng Gang},
   title = {A Raster Voronoi Diagram Generating Algorithm Using Edge Attribution and Bilateral Scanning},
   journal = {Geomatics and Information Science of Wuhan University},

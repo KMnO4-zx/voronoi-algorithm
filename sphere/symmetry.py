@@ -23,7 +23,7 @@ class Symmetry:
             return 3
 
     def inner(self, coord):
-        if coord == [0, 0]:
+        if coord == [0, 0]: # 原点
             return True
         coefficient = self.quadrant[self.get_quadrant(coord)]
         if self.get_quadrant(coord) < 2:

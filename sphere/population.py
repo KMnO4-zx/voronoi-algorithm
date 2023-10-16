@@ -47,7 +47,7 @@ def get_population(coord):
     width = int((180 + coord[0]) * 120)
     color = data.transpose(1, 2, 0)[height][width]
     color = ','.join(map(str, color))
-    return density[color]
+    return density[color] 
 
 
 

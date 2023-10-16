@@ -48,7 +48,7 @@
 - `sphere/data`: This directory is used to store the JSON files for use with Cesium.
 - `sphere/landscan-global-2021-colorized.tif`: This file contains global population density data. Data source: [LandScan Global 2021](https://landscan.ornl.gov).
 
-> Note: To generate spherical centroid Voronoi diagrams using world population data, you need to install the GDAL library. It is recommended to install it using conda: `conda install -c conda-forge gdal`. If that doesn't work, you can try downloading the GDAL wheel file and installing it using pip.
+> Note: To generate spherical centroid Voronoi diagrams using world population data, you need to install the GDAL library. It is recommended to install it using conda: `conda install -c conda-forge gdal`. If that doesn't work, you can try downloading the GDAL wheel file and installing it using pip. 
 
 ## Todo
 
