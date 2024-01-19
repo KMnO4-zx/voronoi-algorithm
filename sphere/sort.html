@@ -18,7 +18,15 @@
     <div id="puiedu-cesiumContainer"></div>
     <script>
         Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2ZGNkYTZjYy1iMTg4LTQ1ZGMtODY1Ni04MDg1YjhmMzgyNzciLCJpZCI6ODgwNzAsImlhdCI6MTY0ODg3NjMzOH0.bdKxV8aKYtSJmUldGXvIw8-KBhCHY4BxR0CWT3ZWF-4';
-        var viewer = new Cesium.Viewer('puiedu-cesiumContainer');
+        // var viewer = new Cesium.Viewer('puiedu-cesiumContainer');
+        var viewer = new Cesium.Viewer('puiedu-cesiumContainer', {
+            baseLayerPicker: false // 关闭基础图层选择器
+        });
+        var customImageryLayer = viewer.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
+            url: 'test.jpg', // 图片路径
+            rectangle: Cesium.Rectangle.fromDegrees(-180, -90, 180, 90) // 图片的地理区域
+        }));
+        viewer.imageryLayers.get(1).alpha = 0.7; // 设置透明度为 0.
         var scene = viewer.scene;
         viewer.scene.globe.show = true;  // 对地球设置隐藏,默认为ture
     
@@ -27,26 +35,13 @@
                 name: 'polygon',
                 polygon: {
                     hierarchy: Cesium.Cartesian3.fromDegreesArray(coords),
-                    material: Cesium.Color.fromCssColorString("rgba(" + color_test + ", 0.9)"),
+                    material: Cesium.Color.fromCssColorString("rgba(" + color_test + ", 0.5)"),
                 }   
             })
         }
 
-        window.onload = function () {
-            let url = './data/test-4-9-2.json';
-            let request = new XMLHttpRequest();
-            request.open('get', url);
-            request.send(null);
-            request.onload = function () {
-                if (request.status == 200){
-                    let json = JSON.parse(request.responseText);
-                    // console.log(json);
-                    for(let i = 0; i < json.length; i++){
-                        polygon_draw(json[i][0], json[i][1]);
-                    }
-                }
-            }
-        }
+        // polygon_draw([-45.00000000000001, -67.5, 45.00000000000001, -67.5, 63.43494882292201, -56.25, 71.56505117707799, -45.0, -71.56505117707799, -45.0, -63.43494882292201, -56.25, -116.56505117707799, -56.25], '255, 0, 0')
+        
     </script>
 </body>
 </html>

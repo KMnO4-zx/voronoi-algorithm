@@ -114,7 +114,7 @@ class SphersVoronoi:
 
     def positive_search(self):
         copy_table = copy.deepcopy(self.table)
-        for i in range(1, self.size - 1):
+        for i in tqdm(range(1, self.size - 1)):
             for j in range(1, self.size - 1):
                 if self.get_la([i, j]) not in self.seed_list:
                     if copy_table[i][j - 1] == copy_table[i - 1][j - 1] == copy_table[i - 1][j] == copy_table[i - 1][
@@ -129,9 +129,11 @@ class SphersVoronoi:
 
     def positive_reverse(self):
         # 正向扫描
+        print("******正向扫描开始******")
         copy_table = self.positive_search()
         # 逆向纠错
-        for i in range(self.size - 2, 0, -1):
+        print("******逆向纠错开始******")
+        for i in tqdm(range(self.size - 2, 0, -1)):
             for j in range(self.size - 2, 0, -1):
                 if self.get_la([i, j]) not in self.seed_list:
                     if copy_table[i][j - 1] == copy_table[i - 1][j - 1] == copy_table[i - 1][j] == copy_table[i - 1][
