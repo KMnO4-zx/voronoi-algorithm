@@ -2,6 +2,10 @@ import math
 from PIL import Image
 from tqdm import tqdm
 import random
+import numpy as np
+import concurrent.futures
+from scipy.spatial import KDTree
+
 def haversine_distance(coordinates1, coordinates2):
     """
     使用哈弗辛公式计算两个经纬度坐标之间的距离。
@@ -76,7 +80,6 @@ def voronoi_data(width, height, seed_list):
     return data
 
 
-
 def paint_map(data, filename, colors):
     width = len(data[0])
     height = len(data)
@@ -88,6 +91,36 @@ def paint_map(data, filename, colors):
             color = colors[data[row][col]]
             put_pixel((col, row), (color[0], color[1], color[2]))
     image.save(f"{filename}.jpg")
+
+def calculate_voronoi_segment(height, width, seed_list, row_start, row_end, progress_bar):
+    segment = np.zeros((row_end - row_start, width))
+    tree = KDTree(seed_list)  # 使用KD树优化搜索
+
+    for row in range(row_start, row_end):
+        for col in range(width):
+            point = index_to_lat_lon_scaled(row, col, height, width)
+            _, nearest_index = tree.query(point)  # 查找最近的种子点
+            segment[row - row_start, col] = nearest_index + 1
+
+        progress_bar.update(1)  # 更新进度条
+
+    return segment
+
+def voronoi_data_parallel(width, height, seed_list):
+    data = np.zeros((height, width))
+    num_threads = 4  # 或者根据您的系统情况调整
+    segment_height = height // num_threads
+
+    progress_bars = [tqdm(total=segment_height, position=i, desc=f"Thread {i+1}") for i in range(num_threads)]
+
+    with concurrent.futures.ThreadPoolExecutor(max_workers=num_threads) as executor:
+        futures = [executor.submit(calculate_voronoi_segment, height, width, seed_list, i * segment_height, (i + 1) * segment_height, progress_bars[i]) for i in range(num_threads)]
+
+        for i, future in enumerate(futures):
+            data[i * segment_height:(i + 1) * segment_height, :] = future.result()
+            progress_bars[i].close()
+
+    return data
 
 
 # 示例：假设矩阵尺寸为 90x180，转换几个矩阵索引
@@ -112,5 +145,5 @@ seeds = [[-40.891272606653786, 69.62248179646832],
  [156.68514286458407, -70.73050104822089],
  [-163.97445221521363, -27.96264162068627]]
 
-v_data = voronoi_data(scaled_width, scaled_height, seeds)
+v_data = voronoi_data_parallel(scaled_width, scaled_height, seeds)
 paint_map(v_data, 'test', [[0, 0, 0]] + [[random.randrange(99, 206) for _ in range(3)] for _ in range(10)])
