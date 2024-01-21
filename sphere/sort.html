@@ -23,10 +23,10 @@
             baseLayerPicker: false // 关闭基础图层选择器
         });
         var customImageryLayer = viewer.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-            url: 'test.jpg', // 图片路径
+            url: './test_90.jpg', // 图片路径
             rectangle: Cesium.Rectangle.fromDegrees(-180, -90, 180, 90) // 图片的地理区域
         }));
-        viewer.imageryLayers.get(1).alpha = 0.7; // 设置透明度为 0.
+        viewer.imageryLayers.get(1).alpha = 0.75; // 设置透明度为 0.
         var scene = viewer.scene;
         viewer.scene.globe.show = true;  // 对地球设置隐藏,默认为ture
     

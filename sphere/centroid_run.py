@@ -130,11 +130,11 @@ def paint_map(data, filename, colors):
 if __name__== "__main__":
     n = 8 # 层数
     size = 2 ** n + 1 # 边长
-    seed_num = 100 # 种子点数量
-    step = 3 # 质心迭代次数
+    seed_num = 800 # 种子点数量
+    step = 12 # 质心迭代次数
     # 假设矩阵尺寸为 90x180，转换几个矩阵索引
-    scaled_height = 90*30
-    scaled_width = 180*30
+    scaled_height = 90*90
+    scaled_width = 180*90
     # 颜色
     colors = [[0, 0, 0]] + [[random.randrange(99, 206) for _ in range(3)] for _ in range(seed_num)] # 随机颜色列表
     seed_list = [convert_la(n, [random.randrange(size), random.randrange(size)]) for _ in range(seed_num)] # 种子点列表
@@ -150,6 +150,10 @@ if __name__== "__main__":
         # 保存为png图片
         # sv.paint(data, 'positive_reverse_sphere_{}.png'.format(i+1), colors)
         seed_list = next_seeds(n, data)
+    with open(f'./data/seed-{n}-{seed_num}-{step}.json', mode='w', encoding='utf-8') as f:
+        f.write(str(json.dumps(seed_list)))
     
     v_data = voronoi_data(scaled_width, scaled_height, seed_list)
+    with open(f'./data/voronoi-{scaled_height}-{scaled_width}-{seed_num}.json', mode='w', encoding='utf-8') as f:
+        f.write(str(json.dumps(v_data)))
     paint_map(v_data, f'./img/voronoi_sphere-{scaled_height}-{scaled_width}-{seed_num}', colors)
