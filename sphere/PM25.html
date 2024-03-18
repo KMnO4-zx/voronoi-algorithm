@@ -20,13 +20,20 @@
         Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2ZGNkYTZjYy1iMTg4LTQ1ZGMtODY1Ni04MDg1YjhmMzgyNzciLCJpZCI6ODgwNzAsImlhdCI6MTY0ODg3NjMzOH0.bdKxV8aKYtSJmUldGXvIw8-KBhCHY4BxR0CWT3ZWF-4';
         // var viewer = new Cesium.Viewer('puiedu-cesiumContainer');
         var viewer = new Cesium.Viewer('puiedu-cesiumContainer', {
-            baseLayerPicker: false // 关闭基础图层选择器
+            baseLayerPicker: false, // 关闭基础图层选择器,
+            animation:false,  // 仪表盘隐藏
+            timeline:false,  // 时间轴隐藏
+            enableLighting: false // 关闭地球晨昏线的发光效果
+            
         });
         var customImageryLayer = viewer.imageryLayers.addImageryProvider(new Cesium.SingleTileImageryProvider({
             url: './img/pm-2022.jpg', // 图片路径
             rectangle: Cesium.Rectangle.fromDegrees(-180, -90, 180, 90) // 图片的地理区域
         }));
-        viewer.imageryLayers.get(1).alpha = 0.9; // 设置透明度为 0.
+        viewer.imageryLayers.raiseToTop(customImageryLayer); // 确保自定义图层在最上层
+        viewer.scene.globe.showGroundAtmosphere = false;
+        viewer.imageryLayers.get(1).alpha = 0.7; // 设置透明度为 0.
+
         var scene = viewer.scene;
         viewer.scene.globe.show = true;  // 对地球设置隐藏,默认为ture
     

@@ -78,15 +78,15 @@ class SphersVoronoi:
                 cos(coord1[1]) * cos(coord2[1]) * cos(coord1[0] - coord2[0]) + sin(coord1[1]) * sin(coord2[1])))
 
     def attribution(self, coord):
-        # 参数为经纬度坐标
-        dic = float('inf')
-        res = []
-        for i in range(len(self.seed_list)):
-            tmp = self.arc_distance(coord, self.seed_list[i])
-            if tmp < dic:
-                res.append(i)
-                dic = tmp
-        return res[-1] + 1
+        min_distance = float('inf')
+        nearest_seed_index = None
+        for i, seed in enumerate(self.seed_list):
+            distance = self.arc_distance(coord, seed)
+            if distance < min_distance:
+                nearest_seed_index = i
+                min_distance = distance
+        return nearest_seed_index + 1  # 索引+1，因为颜色数组从1开始
+
 
     def get_la(self, coord):
         # 输入为 原始[i ,j]
@@ -116,7 +116,7 @@ class SphersVoronoi:
         copy_table = copy.deepcopy(self.table)
         for i in tqdm(range(1, self.size - 1)):
             for j in range(1, self.size - 1):
-                if self.get_la([i, j]) not in self.seed_list:
+                # if self.get_la([i, j]) not in self.seed_list:
                     if copy_table[i][j - 1] == copy_table[i - 1][j - 1] == copy_table[i - 1][j] == copy_table[i - 1][
                             j + 1]:
                         copy_table[i][j] = copy_table[i][j - 1]
@@ -135,7 +135,7 @@ class SphersVoronoi:
         print("******逆向纠错开始******")
         for i in tqdm(range(self.size - 2, 0, -1)):
             for j in range(self.size - 2, 0, -1):
-                if self.get_la([i, j]) not in self.seed_list:
+                # if self.get_la([i, j]) not in self.seed_list:
                     if copy_table[i][j - 1] == copy_table[i - 1][j - 1] == copy_table[i - 1][j] == copy_table[i - 1][
                         j + 1] == copy_table[i][j + 1] == copy_table[i + 1][j + 1] == copy_table[i + 1][j] == \
                             copy_table[i + 1][j - 1]:

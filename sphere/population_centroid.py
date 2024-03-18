@@ -39,6 +39,7 @@ def population_next_seed(n, voronoi_data):
             if voronoi_data[i][j] != 0:
                 voronoi_regin[voronoi_data[i][j]].append(convert_la(n, [i, j]))
     voronoi_keys = list(voronoi_regin.keys())
+    # print('voronoi_keys:', len(voronoi_keys))
     for key in voronoi_keys:
         weights = [get_population(coord) for coord in voronoi_regin[key]]
         res.append(calculate_weighted_center(voronoi_regin[key], weights))
@@ -191,9 +192,9 @@ def paint_map(data, filename, colors):
     image.save(f"{filename}.jpg")
 
 if __name__ == "__main__":
-    n = 9 # 层数
+    n = 8 # 层数
     size = 2 ** n + 1 # 边长
-    seed_num = 3000 # 种子点数量
+    seed_num = 500 # 种子点数量
     step = 32 # 质心迭代次数
     # 假设矩阵尺寸为 90x180，转换几个矩阵索引
     scaled_height = 90*90
@@ -213,6 +214,7 @@ if __name__ == "__main__":
         # 保存为png图片
         # sv.paint(data, 'positive_reverse_sphere_population{}.png'.format(i+1), colors)
         seed_list = population_next_seed(n, data)
+        print('seed_list: ', len(seed_list))
 
     # 最后一次迭代数据也存起来
     with open(f'./data/final_data_q-{n}-{seed_num}-{step}.json', mode='w', encoding='utf-8') as f:
@@ -225,3 +227,4 @@ if __name__ == "__main__":
     with open(f'./data/voronoi_h-{scaled_height}-{scaled_width}-{seed_num}.json', mode='w', encoding='utf-8') as f:
         f.write(str(json.dumps(v_data)))
     paint_map(v_data, f'./img/voronoi_sphere-{scaled_height}-{scaled_width}-{seed_num}', colors)
+    
